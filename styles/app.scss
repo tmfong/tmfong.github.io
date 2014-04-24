@@ -1,0 +1,298 @@
+/* Put your CSS here */
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+  background-color:  #fff; /* light blue #bce8f1;  ex light blue #f4f8fa; */
+  margin:0;     /* This is used to reset any browser-default margins */
+  height:100vh; /* This is needed to overcome a Chrome bug. */
+  width:100vw;  /* As above. */
+}
+body {
+  padding-top: 0px;  
+}
+footer {
+  padding: 30px 0;
+}
+
+.container {
+  width: 100%
+}
+
+.navbar-nav > li > a.active {
+    color: #fff;
+    background-color: #080808
+}
+
+.navbar-toggle {
+  float: left;
+}
+
+.navbar-checkin {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color: #999;
+}
+
+h1,
+.h1 {
+  font-size: 18px;
+  margin-bottom: -5px;
+  padding-bottom: 0;
+  color: #fff; /* green #5cb85c; blue#5bbfde */ 
+  margin-top: 10px;
+  min-height: 30px; /* day-title-right has a 30px icon */
+}
+h2,
+.h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #458e46; 
+  /*dark blue #5bbfde; dark green: #458e46; green: #5cb85c; light green #c2f2c2 light blue #5bbfde; */
+}
+
+h3,
+.h3 {
+  font-size: 14px;
+  color: #5cb85c;  
+  font-weight: normal;
+  margin-top: 0px;
+  margin-right: 5px;
+  margin-left: 5px;  
+  padding-top: 0px; 
+}
+
+blockquote {
+  font-size: 14px;
+  color: #666;
+}
+.row {
+  margin-left: -20px;
+  margin-right: -20px
+}
+.button-cell {
+  padding-left: 0px;
+  padding-right: 10px;  
+}
+.well {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  background-color: #ecf9ee;  /*ex light green #ecf9ee; ex light blue #f4f8fa;*/
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  font-size: 18px;
+  line-height: 1.5;
+  border-radius: 50%;
+  min-height: 60px;
+  min-width: 60px;
+}
+
+.btn-clear {
+  background-color: transparent;
+  border-color: transparent;
+}
+.score-cell {
+  padding: 5px 5px 0 0;
+  width: 70px;
+  text-align: center;
+}
+
+.day-title {
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;  
+  background-color: #aaa; /*dark blue #5bbfde; light blue #bce8f1; */
+  margin-bottom: 5px;
+  min-height: 34px; 
+}
+.day-title-right {
+  text-align: right;
+  white-space: nowrap;
+}
+strong {
+  font-weight: normal;
+  background-color: #fff3ad;
+}
+
+.md {
+  margin: 0px -5px 0px -5px;
+  padding: 0px 10px 10px 10px;
+  background-color: #fff;
+  /*border-top: 1px solid #f9f9f9;*/
+  /*border-radius: 4px;*/
+}
+
+.md > h1 {
+  font-size: 16px;  
+  color: #458e46; 
+  font-weight: bold;  
+  text-transform: uppercase;    
+  padding-bottom: 2px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  min-height: 0px;
+  /*border-bottom: 1px solid #c2f2c2; */
+}
+.md > h2 {
+  font-size: 15px; 
+  color: #458e46; 
+  font-weight: bold;    
+  text-decoration: none;  
+  margin-top: 20px;  
+  border-bottom: 0px none;  
+}
+.md > h3 {
+  font-size: 14px;
+  color: #5cb85c; 
+  font-weight: bold;     
+}
+.md > h4 {
+  font-size: 14px;  
+  color: #5cb85c;   
+  font-weight: normal; 
+}
+.md > h5, .md > h6, .md > h7 {
+  font-size: 13px;   
+  color: #5bbfde;    
+}
+.md > .row {
+  margin-left: -15px;
+  margin-right: 0px;
+}
+.md > ul, .md > ol {
+  margin-left: -10px;
+  margin-bottom: 0px;
+}
+ul > .well {
+  margin-left: -15px;
+  margin-bottom: 0px;
+}
+li > .form-control {
+  margin-left: -15px;
+}
+.li-fix {
+  margin-top: -18px;
+  margin-right: -15px;  
+}
+
+.md-title {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 5px;
+  /* light blue #bce8f1 */
+  border-bottom: 1px solid #ecf9ee;  
+}
+
+.daily-goal {
+  padding-top: 5px;    
+  padding-left: 10px;
+  border-bottom: 1px solid #f4f8fa;
+}
+
+.daily-action {
+  margin-left: -10px;
+}
+
+.daily {
+  margin-bottom: 30px;
+}
+
+.note-form {
+  height: 100vh;
+  background-color: #ecf9ee;  /*ex light green #ecf9ee; ex light blue #f4f8fa;*/  
+}
+.note-header {
+  /*height: 68px;*/
+}
+.note-body {
+  position: absolute;
+  top: 95px;
+  bottom: 55px;
+  left: 35px;
+  right: 35px;
+}
+textarea.form-control {
+  height: 100%;
+  /*width: 100%*/
+}
+.note-footer {
+  position: absolute;  
+  bottom: 10px; 
+}
+
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 98%
+  }   
+/*
+  .navbar-brand {
+    float: none;    
+  }
+  .navbar-header {
+    float: none;
+  }
+*/
+}
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+       -moz-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+@keyframes domChanged { from { background: yellow; } }
+@-webkit-keyframes domChanged { from { background: yellow; } }
+.ember-view { animation: domChanged 1s; -webkit-animation: domChanged 1s; }

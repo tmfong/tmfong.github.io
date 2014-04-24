@@ -1,0 +1,76 @@
+  <div class="row daily-goal">   
+    {{#if isChanging}}  
+
+      {{#if isEditing}} 
+        <div class="col-xs-12">        
+          <div class="well">
+            <div class="row">
+              <div class="col-xs-10">
+                {{input value=title class="form-control"}}
+                {{input type="checkbox" checked=isCompleted}} Completed
+              </div>
+              <div class="col-xs-2">    
+                <button type="button" class="btn btn-success btn-sm pull-right" {{action 'update'}}>
+                  <span class="glyphicon glyphicon-ok"></span>
+                </button>
+              </div>
+            </div><!--/row-->
+          </div><!--/well-->
+        </div>
+      {{/if}}
+
+      {{#if isInvesting}} 
+        <div class="col-xs-12">        
+          <div class="well">
+            <div class="row">
+              <div class="col-xs-6">
+                {{title}}
+              </div>
+              <div class="col-xs-4">
+                {{input placeholder="100" value=investment class="form-control"}}
+              </div>              
+              <div class="col-xs-2">    
+                <button type="button" class="btn btn-success btn-sm pull-right" {{action 'invest'}}>
+                  <span class="glyphicon glyphicon-ok"></span>
+                </button>
+              </div>
+              <div class="col-xs-7">
+
+              </div>
+              <div class="col-xs-5">
+                <small>investment level</small>
+              </div>                          
+            </div><!--/row-->
+          </div><!--/well-->
+        </div>
+      {{/if}}
+
+    {{else}}
+
+      <!-- showing -->
+
+      <div class="col-xs-7">
+        {{#if isCompleted}}&#x2713;{{/if}}      
+        {{title}} 
+      </div>
+
+      <div class="col-xs-2 text-right">  
+        {{#if isInvested}}    
+          ${{investment}}
+        {{/if}}
+      </div>
+
+      <div class="col-xs-3 text-right button-cell">
+        <button type="button" class="btn btn-default btn-sm btn-clear pull-right" {{action 'editing'}}>
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>   
+
+        {{#unless isInvested}}
+          <button type="button" class="btn btn-default btn-sm btn-clear pull-right" {{action 'investing'}}>
+            <span class="glyphicon glyphicon-usd"></span>
+          </button>
+        {{/unless}}  
+      </div>
+
+    {{/if}}
+  </div> 

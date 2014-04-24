@@ -1,0 +1,84 @@
+
+<div class="col-xs-12 col-sm-6"> 
+  {{#if isEditing}}  
+
+    <div class="well note-form">
+
+        <div class="note-header">           
+          {{input type="text" placeholder="title" value=title class="form-control"}}
+          {{input type="text" placeholder="tag" value=tag class="form-control"}} 
+        </div>             
+
+
+        <div class="note-body">
+          {{textarea placeholder="body" value=body class="form-control"}}
+        </div>
+
+        <div class="note-footer">
+          {{#if isConfirmingCancel}}   
+
+              Abandon Your Changes? 
+              <br />
+              
+              <button type="button" 
+                class="btn btn-primary" 
+                {{action 'nevermind' target="view"}}>
+                <span class="glyphicon glyphicon-ban-circle"> Nevermind</span> 
+              </button> 
+
+              <button type="button" 
+                class="btn btn-danger" 
+                {{action 'confirmedCancel' target="view"}}>
+                <span class="glyphicon glyphicon-ok"> Yes</span> 
+              </button> 
+            </div>
+
+          {{else}}
+
+            <button type="button" 
+              class="btn btn-warning" 
+              {{action 'confirmingCancel' target="view"}}>
+              <span class="glyphicon glyphicon-ban-circle" ></span>
+            </button> &nbsp;
+            
+            <button type="button" 
+              class="btn btn-success" 
+              {{action 'update' target="view"}}>
+              <span class="glyphicon glyphicon-ok" ></span>
+            </button>  
+
+          {{/if}} {{!-- if isConfirmingCancel --}}
+        </div>
+    </div> <!--/well-->
+
+  {{else}}  
+   
+    <div class="row md-title">
+      <div class="col-xs-11">            
+        <h2>
+          {{title}}
+        </h2>
+      </div>
+      <div class="col-xs-1 button-cell">
+        <h2>
+          <button type="button" 
+            class="btn btn-default btn-xs btn-clear pull-right" 
+            {{action 'editing' target="view"}}>
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </h2>     
+      </div>
+    </div><!--/row-->
+
+    <h3>
+      {{#if tag}}
+        #{{tag}}
+      {{/if}}
+    </h3>      
+
+    <div class="md">            
+      {{format-markdown body}}
+    </div>
+
+  {{/if}}
+</div>

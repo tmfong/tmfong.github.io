@@ -1,0 +1,65 @@
+<div class="row day-title">       <!--show day header-->
+  <div class="col-xs-4">
+    <h1>
+      {{dayOfWeek}}
+    </h1>
+  </div>
+  <div class="col-xs-8">
+    <h1 class="day-title-right">
+      {{dateDisplay}}             
+    </h1>
+  </div>
+</div><!--row-->
+
+<!-- show daily goals -->
+<div>
+  {{id}}   
+</div>
+
+<!-- header -->
+<div class="row md-title"> 
+  <div class="col-xs-3">
+    {{#if dailyGoals}}         
+      <h2 style="margin-top:65px">Goals</h2>
+    {{/if}}          
+  </div>
+  <div class="col-xs-9">
+    <div class="row pull-right"  style="margin-right: -15px">
+      <div class="col-xs-4 score-cell">
+        {{#if hasInvestments}}
+          {{score-cell value=expenses caption='investments'}}                
+        {{/if}}
+      </div>          
+      <div class="col-xs-4 score-cell">
+        {{score-cell value=earnings caption='earnings'}}
+      </div>
+      <div class="col-xs-4 score-cell">    
+        {{score-cell value=availableFunds caption='balance'}}            
+      </div>
+    </div><!--row-->
+  </div>
+</div><!--/row-->
+
+<!-- goals -->
+<div class="md">
+  {{#each dailyGoals}} 
+    {{view 'daily-goal-view'}}             
+  {{/each}}
+</div> <!--/md-->   
+
+<!-- show daily notes -->
+<div class="row"> 
+  <div class="col-xs-12"><!-- header-->
+    {{#unless isNewNote}} 
+      <button type="button" 
+        class="btn btn-default btn-sm pull-right" 
+        {{action 'addingNote' target="view"}}>
+        Add Note
+      </button>
+    {{/unless}}
+  </div>
+  
+  {{#each notes}}
+    {{view 'note-view'}}
+  {{/each}}
+</div> <!--/row-->
