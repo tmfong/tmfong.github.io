@@ -1,0 +1,31 @@
+{{!id}}
+<h2>{{goal.title}}</h2>
+
+{{!-- NOTE: must use view.xyz to access view properties--}}
+{{bar-chart
+  data=view.activityData 
+  isLoaded=controller.model.isLoaded
+  }}
+
+<!-- activities -->
+<ul class="daily-action"> 
+  {{#each activity in activities}}
+    <li>
+      {{#if activity.createdAt}}       
+        {{activity.body}}
+        <span class="pull-right">{{format-hour activity.createdAt}}</span>
+
+      {{else}}
+        {{!-- only current day can add actions --}}
+        {{!-- day.isToday is hidden in this scope --}} 
+        {{#if activity.dailyGoal.day.isToday}} 
+          {{#if activity.dailyGoal.isActive}}
+            <span class="pull-right">       
+              {{next-activity-button activity=activity action='addingActivity'}}
+            </span>
+          {{/if}} {{!-- isActive --}}
+        {{/if}} {{!-- isToday --}} 
+      {{/if}} {{!-- createdAt --}}
+    </li>
+  {{/each}} 
+</ul>       

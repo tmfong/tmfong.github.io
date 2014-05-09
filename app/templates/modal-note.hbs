@@ -1,0 +1,52 @@
+ <!-- Modal -->
+<div class="modal fade in" style="display:block; background-color: rgba(0, 0, 0, 0.5)" >
+  <div class="modal-dialog note-dialog">
+    <div class="note-content">
+
+      <div class="note-header">           
+        {{input type="text" placeholder="title" value=title class="form-control"}}
+        {{input type="text" placeholder="tag" value=tag class="form-control"}} 
+      </div> 
+
+      <div class="note-body">
+          {{textarea placeholder="body" value=body class="form-control"}}
+      </div>
+
+      <div class="note-footer">
+        {{#if isConfirmingCancel}}   
+
+          Abandon Your Changes? 
+          <br />
+          
+          <button type="button" 
+            class="btn btn-primary" 
+            {{action 'nevermind'}}>
+            <span class="glyphicon glyphicon-ban-circle"> Nevermind</span> 
+          </button> 
+
+          <button type="button" 
+            class="btn btn-danger" 
+            {{action 'confirmedCancel'}}>
+            <span class="glyphicon glyphicon-ok"> Yes</span> 
+          </button> 
+
+        {{else}}
+
+          <button type="button" 
+            class="btn btn-warning" 
+            {{action 'confirmingCancel'}}>
+            <span class="glyphicon glyphicon-ban-circle"> Cancel</span>
+          </button> &nbsp;
+          
+          <button type="button" 
+            class="btn btn-success"
+            {{action 'update'}}>
+            <span class="glyphicon glyphicon-ok"> Save</span>
+          </button>  
+
+        {{/if}} {{!-- if isConfirmingCancel --}}
+
+      </div>
+    </div><!--/modal-content-->
+  </div>  
+</div>

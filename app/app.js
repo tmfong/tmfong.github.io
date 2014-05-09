@@ -1,15 +1,15 @@
 import Resolver from 'ember/resolver';
 
 var App = Ember.Application.extend({
-  LOG_ACTIVE_GENERATION: true,
+  // LOG_ACTIVE_GENERATION: true,
   LOG_MODULE_RESOLVER: true,
-  LOG_TRANSITIONS: true,
-  // Extremely detailed logging, highlighting every internal
-  // step made while transitioning into a route, including
-  // `beforeModel`, `model`, and `afterModel` hooks, and
-  // information about redirects and aborted transitions  
-  LOG_TRANSITIONS_INTERNAL: true,
-  LOG_VIEW_LOOKUPS: true,
+  // LOG_TRANSITIONS: true,
+  // // Extremely detailed logging, highlighting every internal
+  // // step made while transitioning into a route, including
+  // // `beforeModel`, `model`, and `afterModel` hooks, and
+  // // information about redirects and aborted transitions  
+  // LOG_TRANSITIONS_INTERNAL: true,
+  // LOG_VIEW_LOOKUPS: true,
   modulePrefix: 'appkit', // TODO: loaded via config
   Resolver: Resolver['default'],
 

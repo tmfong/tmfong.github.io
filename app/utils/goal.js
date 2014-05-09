@@ -16,16 +16,16 @@ var createDailyGoal = function(store, day, goal) {
   );
   day.get('dailyGoals').addObject(dailyGoal);
 
-
 };
 
 // Ref: 
 //  refresh page: connectActivitiesAndSetupTheNextActivity, 
 //  add activity: saveActivity
 //  check-in: createDailyGoal
-var creatingNextActivity = function(store, dailyGoal, actionAt) {
+var creatingNextActivity = function(store, dailyGoal, actionAt, sequence) {
   var obj = {
     dailyGoal: dailyGoal,
+    sequence: sequence,
     body: '',
     reward: 0,
     actionAt: actionAt,

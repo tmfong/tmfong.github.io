@@ -1,0 +1,19 @@
+
+<!-- show daily notes -->
+<div class="row"> 
+  <div class="col-xs-12"><!-- header-->
+    {{#unless isNewNote}} 
+      <!-- Button trigger modal -->    
+      <button type="button" 
+        class="btn btn-default btn-sm pull-right" 
+        {{action 'updatingNote'}}>{{!action 'addingNote' 'noteModal'}}
+        Add Note
+      </button>
+    {{/unless}}
+  </div>
+  
+  {{#each}}
+    {{view 'note-view'}}
+  {{/each}}
+</div> <!--/row-->
+

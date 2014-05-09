@@ -13,11 +13,11 @@ App.Day = DS.Model.extend({
   }.property('date'), 
   dateDisplay: function() {
     return this.get('dateString') && moment(this.get('dateString')).isValid() ? 
-      moment(this.get('dateString')).format('MMMM D, YYYY') : '';
+      moment(this.get('dateString')).format('MMMM D') : '';
   }.property('dateString'),
   dayOfWeek: function() {
     return this.get('dateString') && moment(this.get('dateString')).isValid() ? 
-      moment(this.get('dateString')).format('dddd') : '';
+      moment(this.get('dateString')).format('ddd') : '';
   }.property('dateString'),
 
   // Finance
@@ -50,6 +50,7 @@ App.Day = DS.Model.extend({
       this.get('starterFunds') + 
       this.get('earnings');
   }.property('starterFunds', 'earnings', 'totalInvestments'),
+
 
   // Status
   //

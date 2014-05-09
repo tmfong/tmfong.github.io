@@ -1,0 +1,32 @@
+ <!-- Modal -->
+{{#modal-dialog}}
+
+  <div class="modal-header">           
+
+  </div> 
+
+  <div class="modal-body">
+    {{input value=title class="form-control"}}
+
+    {{#if isInvested}} 
+      <div class="well">
+        {{input type="checkbox" checked=isCompleted}} Completed 
+      </div>    
+    {{/if}}
+
+  </div>
+
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-warning btn-sm" 
+      {{action 'cancel'}}>
+      <span class="glyphicon glyphicon-ban-circle"> Cancel</span>
+    </button> &nbsp;
+
+    <button type="button" class="btn btn-success btn-sm" 
+      {{action 'update'}}>
+      <span class="glyphicon glyphicon-ok"> Save</span>
+    </button>      
+  </div>
+
+{{/modal-dialog}}

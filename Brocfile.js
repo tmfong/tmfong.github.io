@@ -33,26 +33,26 @@ styles = pickFiles(styles, {
 });
 styles = preprocess(styles);
 
-// var tests = 'tests';
-// tests = pickFiles(tests, {
-//   srcDir: '/',
-//   destDir: 'appkit/tests'
-// });
-// tests = preprocess(tests);
+var tests = 'tests';
+tests = pickFiles(tests, {
+  srcDir: '/',
+  destDir: 'appkit/tests'
+});
+tests = preprocess(tests);
 
-var vendor = 'vendor';
+var vendor = 'vendor'; // TMF: to include vendor js
 vendor = pickFiles(vendor, {
   srcDir: '/',
   destDir: 'vendor'
 });
 vendor = preprocess(vendor);
 
-var loader = 'loader';
+var loader = 'loader';  // TMF: move out of loader
 
 var sourceTrees = [app, styles, vendor, loader];
-// if (env !== 'production') {
-//   sourceTrees.push(tests);
-// }
+if (env !== 'production') {
+  sourceTrees.push(tests);
+}
 sourceTrees = sourceTrees.concat(findBowerTrees());
 
 var appAndDependencies = new mergeTrees(sourceTrees, { overwrite: true });
@@ -70,7 +70,11 @@ var appJs = compileES6(appAndDependencies, {
     'handlebars.js',
     'ember.js',
     'ember-data.js',
-    'ember-resolver.js'
+    'ember-resolver.js',
+    'vendor/d3.min.js', // include in app.js
+    'vendor/showdown.js',
+    'vendor/moment.min.js',
+    'vendor/dropbox-datastores-1.0.1.js'
   ],
   wrapInEval: false, //env !== 'production',
   outputFile: '/assets/app.js'
@@ -79,12 +83,12 @@ var appJs = compileES6(appAndDependencies, {
 var appCss = compileSass(sourceTrees, 'appkit/app.scss', 'assets/app.css');
 
 // if (env === 'production') {
-//   appJs = uglifyJavaScript(appJs, {
-//     // mangle: false,
-//     // compress: false
-//   });
+  appJs = uglifyJavaScript(appJs, {
+    mangle: false,
+    compress: true
+  });
 // }
 
 var publicFiles = 'public';
 
-module.exports = mergeTrees([appJs, appCss, publicFiles, vendor]);
+module.exports = mergeTrees([appJs, appCss, publicFiles]); 

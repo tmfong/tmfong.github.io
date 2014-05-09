@@ -1,5 +1,39 @@
-{{#each}}
-    <div class="daily">
-      {{view 'day-view'}} {{!view App.DayView}}
+
+<div class="row">
+
+  {{#unless checkedIn}}   
+    <div class="col-xs-12">
+      <button type="button" 
+        class="btn btn-default btn-sm" 
+        {{action 'dailyCheckIn'}}>
+        Check-in
+      </button>         
     </div>
-{{/each}}
+  {{/unless}}
+
+  {{#with controllers.application.lastCheckInDay}}
+    {{#if dailyGoals}}
+      {{view 'day-view'}}    
+    {{/if}}
+  {{/with}}
+
+  <div class="col-xs-12"> 
+    {{line-chart 
+      data=totalAssetsData
+      caption='Total'
+      isLoaded=model.isLoaded    
+      }}
+  </div>
+
+  {{#each goals}}     
+    {{view 'goal-view'}}
+  {{/each}}
+
+  <div class="col-xs-12 text-right" style="padding-top:5px">
+    <button type="button" 
+      class="btn btn-success btn-sm" 
+      {{action 'updatingGoal'}}>
+      <span class="glyphicon glyphicon-plus"></span> New Goal
+    </button>
+  </div>
+</div>

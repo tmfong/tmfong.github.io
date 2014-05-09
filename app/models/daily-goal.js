@@ -4,6 +4,9 @@ import dateHelper from 'appkit/utils/date';
 App.DailyGoal = DS.Model.extend({
   goal: DS.belongsTo('goal'),
   day: DS.belongsTo('day'), 
+  // title: function () {
+  //   return this.get('goal').get('title');
+  // }.property('goal'),
 
   investment: DS.attr(),
   earnings: function() {
