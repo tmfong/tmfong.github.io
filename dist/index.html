@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+  <title>Launch Sequence</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">  
+  <!--script src="//www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script-->  
+  <script src="assets/app.js"></script>
+  <!--link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"-->  
+  <link href="assets/app.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+  <script>
+  // http://stackoverflow.com/questions/21916182/how-to-handle-invalid-routes-without-slash-in-ember-js
+	window.dropboxClient = new Dropbox.Client({
+	key: '3pjra0nxwgejhqm'
+	});
+
+	dropboxClient.authenticate({ interactive: true }, function(error) {
+	if (error) {
+	return console.log('Error during authentication');
+	}
+	});
+     
+  	var app = require('appkit/app');
+    window.App = app.default.create();
+  </script>
+</body>
+</html>
