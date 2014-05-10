@@ -2,31 +2,56 @@
 {{#modal-dialog}}
 
   <div class="modal-header">           
-
+    <h2>Editing</h2>
   </div> 
 
-  <div class="modal-body">
-    {{input value=title class="form-control"}}
+  <div class="modal-body ">
 
-    {{#if isInvested}} 
-      <div class="well">
-        {{input type="checkbox" checked=isCompleted}} Completed 
-      </div>    
-    {{/if}}
+    <div class="form">  
+      <div class="form-group">
+        {{input value=title class="form-control"}}
+      </div>
 
-  </div>
+      <div class="text-right">
+        <button type="button" class="btn btn-warning btn-sm" 
+          {{action 'cancel'}}>
+          <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+        </button> &nbsp;
 
-  <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-sm" 
+          {{action 'update'}}>
+          <span class="glyphicon glyphicon-ok"></span> Save
+        </button> 
+      </div> 
+    </div><!--/well-->
 
-    <button type="button" class="btn btn-warning btn-sm" 
-      {{action 'cancel'}}>
-      <span class="glyphicon glyphicon-ban-circle"> Cancel</span>
-    </button> &nbsp;
+  </div> <!--/modal-body-->
 
-    <button type="button" class="btn btn-success btn-sm" 
-      {{action 'update'}}>
-      <span class="glyphicon glyphicon-ok"> Save</span>
-    </button>      
-  </div>
+  {{#if isInvested}} 
+    <div class="modal-footer">
+      {{#if isConfirmingComplete}}   
 
+        <h2>Complete this goal?</h2>
+        <br />
+        
+        <button type="button" 
+          class="btn btn-primary" 
+          {{action 'nevermind'}}>
+          <span class="glyphicon glyphicon-ban-circle"></span> Nevermind 
+        </button> 
+
+        <button type="button" 
+          class="btn btn-danger" 
+          {{action 'complete'}}>
+          <span class="glyphicon glyphicon-ok"></span> Yes 
+        </button> 
+
+      {{else}}      
+        <button type="button" class="btn btn-danger btn-sm" 
+          {{action 'confirmingComplete'}}>
+          <span class="glyphicon glyphicon-stop"></span>  Complete
+        </button>
+      {{/if}}
+    </div>
+  {{/if}}
 {{/modal-dialog}}

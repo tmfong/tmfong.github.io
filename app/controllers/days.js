@@ -3,10 +3,9 @@ import config from 'appkit/utils/config';
 
 export default Ember.ArrayController.extend({
   needs: ['application'],
-  // availableFundsVault: Ember.computed.alias('controllers.application.availableFundsVault'),
-  // totalInvestmentsVault: Ember.computed.alias('controllers.application.totalInvestmentsVault'),
   // lastCheckInDateVault: Ember.computed.alias('controllers.application.lastCheckInDateVault'),
-  
+  // lastCheckInDay: Ember.computed.alias('controllers.application.lastCheckInDay'),
+
   checkedIn: function() {
     return this.get('controllers.application.lastCheckInDateVault') && 
       this.get('controllers.application.lastCheckInDateVault').get('value') === dateHelper.todayDate();

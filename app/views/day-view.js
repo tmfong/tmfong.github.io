@@ -3,6 +3,10 @@
 export default Ember.View.extend({
   templateName: 'day-view',
 
+  isLastDay: function() {
+    return this.get('date');
+  }.property('date'), 
+
   earningsStyle: function() {
     return currencyButtonCssClass(this.get('earnings'));
   }.property('availableFunds'),

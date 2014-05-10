@@ -83,10 +83,10 @@ var appJs = compileES6(appAndDependencies, {
 var appCss = compileSass(sourceTrees, 'appkit/app.scss', 'assets/app.css');
 
 // if (env === 'production') {
-  appJs = uglifyJavaScript(appJs, {
-    mangle: false,
-    compress: true
-  });
+  // appJs = uglifyJavaScript(appJs, {
+  //   mangle: false,
+  //   compress: true
+  // });
 // }
 
 var publicFiles = 'public';

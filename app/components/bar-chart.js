@@ -21,6 +21,8 @@ export default  Ember.Component.extend({
     var width = containerEl.clientWidth;
     // var height = this.get('height');
     var height      = width * 0.5;  
+    if (height > 200) height = 200;
+    
     var padding = {top: 20, right: 0, bottom: 40, left:40, none:0};
     var barWidth = (width - padding.left - padding.right) / 14;
 

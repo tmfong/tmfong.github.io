@@ -1,7 +1,14 @@
 import config from 'appkit/utils/config';
 
 export default Ember.View.extend({
-  templateName: 'day-activities-view',  
+  templateName: 'day-dailygoal-view',  
+
+  isLastDay: function() {
+    // NOTE: accessing Application Controller from a view
+    var controller = this.get('controller');
+    var lastCheckInDate = controller.get('controllers.application.lastCheckInDay').get('date');
+    return this.get('context').get('day').get('date') === lastCheckInDate;
+  }.property('day'), 
 
   activityData: function() {
     var groups = [];        

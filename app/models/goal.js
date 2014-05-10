@@ -16,6 +16,12 @@ App.Goal = DS.Model.extend({
     return this.get('investment') > 0;
   }.property('investment'),   
 
+  sorting: function() {
+    if (this.get('isCompleted')) return 2;
+    if (this.get('isInvested')) return 1;
+    return 0;
+  }.property('isCompleted', 'isInvested'),
+
   dailyGoals: DS.hasMany('dailyGoal')
 });
 

@@ -16,9 +16,9 @@
         <span class="pull-right">{{format-hour activity.createdAt}}</span>
 
       {{else}}
-        {{!-- only current day can add actions --}}
+        {{!-- only last day can add actions --}}
         {{!-- day.isToday is hidden in this scope --}} 
-        {{#if activity.dailyGoal.day.isToday}} 
+        {{#if view.isLastDay}} 
           {{#if activity.dailyGoal.isActive}}
             <span class="pull-right">       
               {{next-activity-button activity=activity action='addingActivity'}}

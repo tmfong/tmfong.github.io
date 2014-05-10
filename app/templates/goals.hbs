@@ -1,0 +1,48 @@
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">  
+    <table class="table table-hover table-striped">
+      <tbody>
+        {{#each}}
+          <tr>      
+            <td>
+              {{#if isInvested}}   
+                <span class="glyphicon glyphicon-flag"></span>  
+              {{else}}
+                {{#if isCompleted}}
+                  &#x2713; 
+                {{else}}
+                  &nbsp;
+                {{/if}}
+              {{/if}}  
+            </td>      
+
+            <td>
+              <a {{action 'updatingGoal' this}}>{{title}}</a>
+            </td>
+
+            <td>
+              {{#unless isInvested}}   
+                {{#unless isCompleted}}
+                  <button type="button" class="btn btn-success btn-sm pull-right" 
+                    {{action 'investGoal' this}}>
+                    <span class="glyphicon glyphicon-play"></span> Start
+                  </button>      
+                {{/unless}} 
+              {{/unless}}  
+            </td>        
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="text-right" >
+      <button type="button" 
+        class="btn btn-success btn-sm" 
+        {{action 'updatingGoal'}}>
+        <span class="glyphicon glyphicon-plus"></span> New Goal
+      </button>
+    </div>
+  </div>  
+
+</div>

@@ -50,16 +50,18 @@ function drawLineChart(elementId, data, height, caption) {
     }
   );
 
-    var containerEl = document.getElementById(elementId);
+  var containerEl = document.getElementById(elementId);
 
-    var width       = containerEl.clientWidth,
-      height      = width * 0.5,
-      padding = {top: 20, right: 0, bottom: 40, left:40, none:0},      
-      detailWidth  = 98,
-      detailHeight = 55,
-      detailMargin = 10,
+  var width       = containerEl.clientWidth;
+  var height      = width * 0.5;
+  if (height > 200) height = 200;
 
-      container   = d3.select( containerEl );
+  var padding = {top: 20, right: 0, bottom: 40, left:40, none:0},      
+    detailWidth  = 98,
+    detailHeight = 55,
+    detailMargin = 10;
+
+  var container   = d3.select( containerEl );
 
   // // Clear for refresh
   // container.selectAll('svg')

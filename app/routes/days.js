@@ -87,7 +87,9 @@ export default Ember.Route.extend({
       }
 
       controller.set('activities', hash.activitiesPromise);
-      controller.set('goals', hash.goalsPromise);
+
+      var goalsController = self.controllerFor('goals');
+      goalsController.set('model', hash.goalsPromise);
 
       // NOTE: Okay, but model.isLoaded will be undefined
       // controller.set('model', days);
@@ -115,6 +117,14 @@ export default Ember.Route.extend({
   //     return configHelper.updateVault(lastCheckInDateVault, lastDate);           
   //   });  
   // },
+
+  renderTemplate: function() {
+    this.render('days');
+    this.render('goals', { 
+      outlet: 'goals',
+      controller: this.controllerFor('goals')
+    });
+  },
 
   actions: {
 
@@ -425,17 +435,41 @@ function creatingGoal(store) {
   return store.createRecord('goal', obj);
 };
 
-function updateGoal(store, goal) {
+function updateGoal(route, goal) {
   // Completing the goal
   if (goal.get('isCompleted')){
     // NOTE: technique for figuring out what was changed
     var changes = goal.changedAttributes(); //=> { isCompleted: [oldValue, newValue] }
-    if (changes.get('isCompleted')) {
-      goal.set('endDate', dateHelper.todayDate());
-      // TODO: accounting and stop dailygoal   
+    if (changes.endDate) {
+      // Accounting and stop dailygoal 
+
+      var application = route.controllerFor('application');
+      var lastCheckInDay = application.get('lastCheckInDay');
+
+      var expenses = lastCheckInDay.get('expenses');
+      var totalInvestments = lastCheckInDay.get('totalInvestments');
+      var availableFunds = lastCheckInDay.get('availableFunds');
+      var recoveringInvestment = goal.get('investment');
+
+      lastCheckInDay.set('expenses', expenses - recoveringInvestment);
+      lastCheckInDay.set('totalInvestments', totalInvestments - recoveringInvestment);
+      // lastCheckInDay.save();
+
+      var dailyGoals = lastCheckInDay.get('dailyGoals').get('content');
+      var dailyGoal;
+      for (var i = 0; i < dailyGoals.length; i++) {
+        if (dailyGoals[i].get('goal').get('id') === goal.get('id')) {
+          dailyGoal = dailyGoals[i];
+        }
+      }
+      if (dailyGoal) {
+        dailyGoal.set('investment', 0);
+        // dailyGoal.save();
+      }
+      goal.set('investment', 0);
     }
   } 
-  return goal.save();  
+  // return goal.save();  
 };
 
 
@@ -443,11 +477,6 @@ function updateGoal(store, goal) {
 // Assume today is checked in
 function investGoal(route, goal) {
   var controller = route.controllerFor('application');
-
-
-  // var fundVault = controller.get('availableFundsVault');
-  // var investmentVault = controller.get('totalInvestmentsVault');
-  // var lastCheckInDate = controller.get('lastCheckInDateVault').get('value');
   var lastCheckInDay = controller.get('lastCheckInDay');
 
   var expenses = lastCheckInDay.get('expenses');
